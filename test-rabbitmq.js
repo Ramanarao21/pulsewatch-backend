@@ -6,9 +6,8 @@ const testPublish = async () => {
     await connectRabbitMQ();
     console.log("✅ Connected to RabbitMQ");
 
-    // Publish a test job
     publishToQueue("service-checks", {
-      serviceId: 999,
+      serviceId: 1,      
       serviceName: "Test Service",
       serviceUrl: "https://httpstat.us/200",
       userId: 1,

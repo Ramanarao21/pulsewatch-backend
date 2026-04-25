@@ -1,24 +1,36 @@
-import nodemailer from "nodemailer";
+import Mailjet from "node-mailjet";
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+const mailjet = Mailjet.apiConnect(
+  process.env.MJ_APIKEY_PUBLIC,
+  process.env.MJ_APIKEY_PRIVATE
+);
 
 export const sendEmail = async ({ subject, html }) => {
   try {
-    console.log("📧 Sending email to:", process.env.SENDER_EMAIL);
-    const info = await transporter.sendMail({
-      from: `"StatusWatch" <${process.env.EMAIL}>`,
-      to: process.env.SENDER_EMAIL,
-      subject,
-      html,
+    console.log("📧 Sending email via Mailjet to:", process.env.SENDER_EMAIL);
+
+    const request = mailjet.post("send", { version: "v3.1" }).request({
+      Messages: [
+        {
+          From: {
+            Email: process.env.EMAIL,
+            Name: "StatusWatch Monitoring",
+          },
+          To: [
+            {
+              Email: process.env.SENDER_EMAIL,
+              Name: "Admin",
+            },
+          ],
+          Subject: subject,
+          HTMLPart: html,
+        },
+      ],
     });
-    console.log("✅ Email sent:", info.messageId);
+
+    const result = await request;
+    console.log("✅ Email sent via Mailjet:", result.body.Messages[0].Status);
   } catch (err) {
-    console.error("❌ Email failed:", err.message);
+    console.error("❌ Mailjet email failed:", err.statusCode, err.message);
   }
 };
