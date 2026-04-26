@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 
 initSocket(server);
 
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/auth", authRoutes);
