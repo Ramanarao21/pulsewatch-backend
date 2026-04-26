@@ -1,5 +1,5 @@
 export const incidentCreatedTemplate = ({ errorMessage, time, serviceUrl, serviceName }) => ({
-  subject: `🚨 [INCIDENT] ${serviceName} is DOWN — ${new Date(time).toUTCString()}`,
+  subject: `🚨 [INCIDENT] ${serviceName} is DOWN`,
   html: `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f0f0f; color: #e0e0e0; border: 1px solid #333; border-radius: 6px; overflow: hidden;">
       <div style="background: #c0392b; padding: 20px 24px;">
@@ -21,7 +21,7 @@ export const incidentCreatedTemplate = ({ errorMessage, time, serviceUrl, servic
           </tr>
           <tr style="border-bottom: 1px solid #222;">
             <td style="padding: 10px 8px; color: #888;">Detected At</td>
-            <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(time).toUTCString()}</td>
+            <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(time).toLocaleString()}</td>
           </tr>
           <tr style="border-bottom: 1px solid #222;">
             <td style="padding: 10px 8px; color: #888;">Reason</td>
@@ -66,11 +66,11 @@ export const incidentResolvedTemplate = ({ startedAt, resolvedAt, serviceUrl, se
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Incident Started</td>
-              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(startedAt).toUTCString()}</td>
+              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(startedAt).toLocaleString()}</td>
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Resolved At</td>
-              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(resolvedAt).toUTCString()}</td>
+              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(resolvedAt).toLocaleString()}</td>
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Total Downtime</td>
