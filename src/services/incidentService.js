@@ -20,7 +20,7 @@ export const handleIncident = async (currentStatus, errorMessage, service) => {
 
   if (allDown && !activeIncident) {
     const incident = await prisma.incident.create({ data: { status: "ONGOING", serviceId: service.id } });
-    const time = incident.startedAt.toISOString();
+    const time = new Date().toISOString(); 
     console.log(`🚨 INCIDENT CREATED [${service.name}]`);
 
     // Emit only to the service owner

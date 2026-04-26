@@ -21,7 +21,7 @@ export const incidentCreatedTemplate = ({ errorMessage, time, serviceUrl, servic
           </tr>
           <tr style="border-bottom: 1px solid #222;">
             <td style="padding: 10px 8px; color: #888;">Detected At</td>
-            <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(time).toLocaleString()}</td>
+            <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</td>
           </tr>
           <tr style="border-bottom: 1px solid #222;">
             <td style="padding: 10px 8px; color: #888;">Reason</td>
@@ -66,11 +66,11 @@ export const incidentResolvedTemplate = ({ startedAt, resolvedAt, serviceUrl, se
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Incident Started</td>
-              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(startedAt).toLocaleString()}</td>
+              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(startedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</td>
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Resolved At</td>
-              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(resolvedAt).toLocaleString()}</td>
+              <td style="padding: 10px 8px; color: #e0e0e0;">${new Date(resolvedAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</td>
             </tr>
             <tr style="border-bottom: 1px solid #222;">
               <td style="padding: 10px 8px; color: #888;">Total Downtime</td>
